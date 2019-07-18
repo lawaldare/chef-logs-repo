@@ -1,0 +1,45 @@
+<app-header></app-header>
+<div class="container card mt-5 shadow-lg p-3 mb-5 bg-white rounded">
+  <form #regForm="ngForm" (ngSubmit)="regForm.form.valid && onSubmit(regForm)">
+    <h1 class="display-5">Login</h1>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input id="email" type="email" class="form-control" #email="ngModel" ngModel name="email" required>
+        </div>
+
+        <!-- Validation -->
+        <div *ngIf="email.touched && !email.valid" class="alert alert-danger">
+          <div *ngIf="email.errors.required && email.touched"> Email is required </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input id="password" type="password" class="form-control" #password="ngModel" ngModel name="password" required>
+        </div>
+
+        <!-- Validation -->
+        <div *ngIf="password.touched && !password.valid" class="alert alert-danger">
+          <div *ngIf="password.errors.required && password.touched"> Password is required </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <button class="btn btn-outline-primary btn-block">Login</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <p class="display-5">Don't have an account? <a [routerLink]="['/register']">Sign up</a></p>
+
+</div>

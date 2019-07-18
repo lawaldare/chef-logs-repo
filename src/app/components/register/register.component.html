@@ -1,0 +1,95 @@
+<app-header></app-header>
+<div class="container card mt-5 shadow-lg p-3 mb-5 bg-white rounded">
+  <form #regForm="ngForm" (ngSubmit)="regForm.form.valid && onSubmit(regForm)">
+    <h1 class="display-5">Create an account</h1>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input id="firstName" type="text" class="form-control" #firstName="ngModel" ngModel name="firstName" required>
+        </div>
+
+        <!-- Validation -->
+        <div *ngIf="firstName.touched && !firstName.valid" class="alert alert-danger">
+          <div *ngIf="firstName.errors.required"> First Name is required </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input id="lastName" type="text" class="form-control" #lastName="ngModel" ngModel name="lastName" required>
+        </div>
+
+        <!-- Validation -->
+        <div *ngIf="lastName.touched && !lastName.valid" class="alert alert-danger">
+          <div *ngIf="lastName.errors.required"> Last Name is required </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input id="email" type="email" class="form-control" #email="ngModel" ngModel name="email" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" required>
+        </div>
+
+        <!-- Validation -->
+        <div *ngIf="email.touched && !email.valid" class="alert alert-danger">
+          <div *ngIf="email.errors.required && email.touched"> Email is required </div>
+          <div *ngIf="email.errors.pattern && email.touched"> Email is not valid </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input id="password" type="password" class="form-control" #password="ngModel" ngModel name="password" minlength="8" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" required>
+        </div>
+
+        <!-- Validation -->
+        <div *ngIf="password.touched && !password.valid" class="alert alert-danger">
+          <div *ngIf="password.errors.required && password.touched"> Password is required </div>
+          <div *ngIf="password.errors.pattern && password.touched"> Password should be minimum of eight characters, at least one uppercase letter, one lowercase letter and one number </div>
+        </div>
+
+      </div>
+    </div>
+
+
+
+    <div class="row mb-3">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="cpassword">Confirm Password</label>
+          <input id="cpassword" type="password" class="form-control" #cpassword="ngModel" ngModel name="cpassword" required compare="password">
+        </div>
+
+        <div *ngIf="cpassword.touched && !cpassword.valid" class="alert alert-danger">
+          <div *ngIf="cpassword.errors.required && cpassword.touched"> Confirm Password is required </div>
+          <div *ngIf="cpassword.errors.compare && cpassword.touched"> Confirm Password is does not match </div>
+          <!-- <div *ngIf="password.errors.pattern && password.touched"> Password should be minimum of eight characters, at least one uppercase letter, one lowercase letter and one number </div> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <button class="btn btn-outline-primary btn-block" [disabled]="regForm.invalid">Register</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+
+  <p class="display-5">Already have an account? <a [routerLink]="['/login']">Log In</a></p>
+
+</div>

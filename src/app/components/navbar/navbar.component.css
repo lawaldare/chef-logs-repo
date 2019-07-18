@@ -1,0 +1,11 @@
+.tag {
+  color: #311b92;
+}
+
+li a {
+  color: black !important;
+}
+
+nav {
+  font-family: 'Quicksand', sans-serif;
+}

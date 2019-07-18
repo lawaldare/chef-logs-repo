@@ -1,0 +1,36 @@
+<table class="table table-hover" *ngIf="loaded && chefs.length > 0">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Chef Name</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Email Address</th>
+      <th scope="col">Address</th>
+      <th scope="col">Phone Number</th>
+      <th scope="col">Date</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let chef of chefs" [class.bg-secondary]="selectedChef===chef">
+      <th scope="row">{{chef.title}}</th>
+      <td>{{chef.name}}</td>
+      <td>{{chef.gender}}</td>
+      <td>{{chef.email}}</td>
+      <td>{{chef.address}}</td>
+      <td>{{chef.phone}}</td>
+      <td class='date'>{{chef.date | date: 'short'}}</td>
+      <td><i (click)="onSelect(chef)" class="fa fa-edit"></i></td>
+      <td><i (click)="onDelete(chef)" class="fa fa-remove"></i></td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="loaded && chefs.length === 0" class="container">
+  <h1 class="display-5">You haven't created any chef</h1>
+</div>
+
+<div *ngIf="!loaded" class="container">
+  <h1 class="display-5">Loading your chefs...</h1>
+</div>

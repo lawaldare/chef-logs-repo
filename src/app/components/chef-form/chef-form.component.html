@@ -1,0 +1,61 @@
+<div class="container card mt-3 shadow-lg p-3 mb-5 bg-white rounded">
+  <form #regForm="ngForm" (ngSubmit)="onSubmit()">
+    <h1 class="display-5">Dashboard</h1>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="title">Title</label>
+        <select id="title" [(ngModel)]="title" name="title" class="form-control">
+          <option value="Title" disabled selected>Title</option>
+          <option value="Executive Chef">Executive Chef</option>
+          <option value="Head Chef">Head Chef</option>
+          <option value="Sous Chef">Sous Chef</option>
+          <option value="Chef De Partie">Chef De Partie</option>
+          <option value="Commis Chef">Commis Chef</option>
+          <option value="Kitchen Porter">Kitchen Porter</option>
+        </select>
+      </div>
+      <div class="form-group col-md-8">
+        <label for="name">Chef Name</label>
+        <input type="text" class="form-control" [(ngModel)]="name" name="name" id="name" placeholder="Chef Name">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="gender">Gender</label>
+        <select id="gender" [(ngModel)]="gender" name="gender" class="form-control">
+          <option value="Gender" disabled selected>Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div>
+      <div class="form-group col-md-8">
+        <label for="email">Email Address</label>
+        <input type="email" class="form-control" [(ngModel)]="email" name="email" id="email" placeholder="Email Address" required>
+      </div>
+
+      <!-- Validation -->
+      <!-- <div *ngIf="regForm.email.touched && !regForm.email.valid" class="alert alert-danger">
+        <div *ngIf="regForm.email.errors.required && regForm.email.touched"> regForm.Email is required </div>
+        <div *ngIf="regForm.email.errors.pattern && regForm.email.touched"> Email is not valid </div>
+      </div> -->
+
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label for="address">Address</label>
+        <input placeholder="Address" [(ngModel)]="address" name="address" id="address" type="text" class="form-control">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label for="address">Phone Number</label>
+        <input placeholder="Phone Number" [(ngModel)]="phone" name="phone" id="phone" type="text" class="form-control">
+      </div>
+    </div>
+
+    <input *ngIf="isNew" type="submit" value="Create Chef" class="btn btn-block btn-outline-primary" [disabled]="regForm.invalid">
+    <input *ngIf="!isNew" type="submit" value="Update Chef" class="btn btn-block btn-outline-dark">
+  </form>
+
+</div>

@@ -1,0 +1,12 @@
+img {
+  width: 450px;
+  height: 300px;
+}
+
+.image-box {
+  margin: 0 auto;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
